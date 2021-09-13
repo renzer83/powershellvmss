@@ -1,3 +1,3 @@
 cd C:\azagent\A1
-C:\azagent\A1\config.cmd remove --unattended --auth PAT --token z3y7kp36lfhpuulzjfe7ffdqv5uobwrc5iwf6ccksj4qhfxps6wa
+C:\azagent\A1\config.cmd remove --unattended --auth PAT --token x4oxvozzriktyzl7phm42szdyw64ww2z4jxuf5lwgdid2jh34u4a
 Remove-Item -path c:\azagent -recurse -force
