@@ -1,12 +1,13 @@
 param (
-    $SERVER
+    $SERVER,
+    $APIKEY
 )
 
 cd "C:\OctopusDeploy\Tentacle"
-.\Tentacle.exe deregister-worker --server="$SERVER"
-sc.exe stop "OctopusDeploy Tentacle"
+.\Tentacle.exe deregister-from --server $SERVER --apiKey $APIKEY
 Start-Sleep -Seconds 5
 cd C:\Temp
+sc.exe stop "OctopusDeploy Tentacle"
 msiexec.exe /x "Octopus.Tentacle.latest.msi" /QN
 cd
 Start-Sleep -Seconds 5
