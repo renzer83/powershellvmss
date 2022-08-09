@@ -3,7 +3,7 @@ param (
 )
 
 cd "C:\OctopusDeploy\Tentacle"
-.\Tentacle.exe deregister-worker --server=$SERVER
+.\Tentacle.exe deregister-worker --server="$SERVER"
 Start-Sleep -Seconds 5
 cd C:\Temp
 msiexec.exe /x "Octopus.Tentacle.latest.msi" /QN
