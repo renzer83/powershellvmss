@@ -11,9 +11,9 @@ param (
 
 ## Download client Octopus
 $clientURL = "https://octopus.com/downloads/latest/WindowsX64/OctopusTentacle"
-$clientDestination = "C:\Users\rootadmin\Downloads\Octopus.Tentacle.latest.msi"
+$clientDestination = "C:\Temp\Octopus.Tentacle.latest.msi"
 Invoke-WebRequest $clientURL -OutFile $clientDestination
-cd C:\Users\rootadmin\Downloads\
+cd C:\Temp
 msiexec INSTALLLOCATION="C:\OctopusDeploy\Tentacle" /i Octopus.Tentacle.latest.msi /quiet
 
 #msiexec.exe /x "Octopus.Tentacle.latest.msi"
