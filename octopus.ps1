@@ -17,6 +17,7 @@ cd C:\Temp
 msiexec INSTALLLOCATION="C:\OctopusDeploy\Tentacle" /i Octopus.Tentacle.latest.msi /quiet
 
 #msiexec.exe /x "Octopus.Tentacle.latest.msi"
+Start-Sleep -Seconds 5
 cd C:\OctopusDeploy\Tentacle\
 # Configure Tentacle Octopus
 .\Tentacle.exe create-instance --instance "Tentacle" --config "C:\Octopus\Tentacle.config" --console
