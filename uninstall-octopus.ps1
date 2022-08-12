@@ -4,7 +4,7 @@ param (
 )
 
 cd "C:\OctopusDeploy\Tentacle"
-.\Tentacle.exe deregister-from --server $SERVER --apiKey $APIKEY
+.\Tentacle.exe deregister-from --server $SERVER --apiKey $APIKEY --space $SPACE  
 Start-Sleep -Seconds 5
 cd C:\Temp
 sc.exe stop "OctopusDeploy Tentacle"
