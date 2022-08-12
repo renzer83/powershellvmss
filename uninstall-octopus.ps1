@@ -1,6 +1,7 @@
 param (
     $SERVER,
-    $APIKEY
+    $APIKEY,
+    $SPACE
 )
 
 cd "C:\OctopusDeploy\Tentacle"
