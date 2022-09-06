@@ -5,7 +5,7 @@
     $PORT,
     $SPACE,
     $ENVIRONMENT,
-    $ROLE
+    $ROLE,
     $POLICY,
     $serverThumbprint
 )
