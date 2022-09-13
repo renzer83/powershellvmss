@@ -20,4 +20,6 @@ For ($i=0; $i -lt $ROLE.Length; $i++) {
     $arrlist.Add("--role="+$ROLE[$i])
     }
 Write-Host $arrlist 
-./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE $arrlist --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
+$result = $arrlist.Substring(1)
+./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE $result --environment $ENVIRONMENT --comms-style TentaclePassive --force --console 
+
