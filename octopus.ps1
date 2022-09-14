@@ -5,7 +5,7 @@ param (
     $PORT,
     $SPACE,
     $ENVIRONMENT,
-    $ROLE,
+    [String[]]$ROLE,
     $POLICY,
     $serverThumbprint
 )
