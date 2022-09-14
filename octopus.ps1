@@ -15,12 +15,11 @@ cd "C:\Program Files\Octopus Deploy\Tentacle"
 .\Tentacle.exe deregister-from --server $SERVER --apiKey $APIKEY --instance=$NAME  --space=$SPACE
 Start-Sleep -Seconds 2
 $array = $ROLE.split(",")
-New-Object -TypeName System.Collections.ArrayList
-$arrayrole = [System.Collections.Arraylist]@()
-For ($i=0; $i -lt $array.Length; $i++) {
-    $arrayrole.Add("--role "+$array[$i])
-    }
-[String[]]$tostringrole = $arrayrole
-./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE $tostringrole --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
+if ($array.count -eq 4){
+    ./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE --role $array[0] --role $array[1] --role $array[2] --role $array[3] --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
+}
+elseif ($array.count -eq 2){
+    ./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE --role $array[0] --role $array[1] --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
+}
 #./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE $ROLE --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
-# ./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE --role $array[0] --role $array[1] --role $array[2] --role $array[3] --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
+
