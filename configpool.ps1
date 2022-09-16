@@ -1,11 +1,13 @@
-param
-
-
+param (
+    $USERNAME,
+    $PASS,
+    $POOLNAME,
+)
 Import-Module WebAdministration
 $identity = @{  `
     identitytype="SpecificUser"; `
-    username=""; `
-    password="" `
+    username="$USERNAME"; `
+    password="$PASS" `
 }
-Set-ItemProperty -Path "IIS:\AppPools\$WebsiteName" -name "processModel" -value $identity
+Set-ItemProperty -Path "IIS:\AppPools\$POOLNAME" -name "processModel" -value $identity
  
