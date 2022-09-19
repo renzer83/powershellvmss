@@ -1,7 +1,7 @@
-param (
+ param (
     $USERNAME,
     $PASS,
-    $POOLNAME,
+    $POOLNAME
 )
 Import-Module WebAdministration
 $identity = @{  `
@@ -11,19 +11,19 @@ $identity = @{  `
 }
 
 $array = $POOLNAME.split(",")
-if ($array.count -eq 4){
-    Set-ItemProperty -Path "IIS:\AppPools\$array[0]" -name "processModel" -value $identity
-    Set-ItemProperty -Path "IIS:\AppPools\$array[1]" -name "processModel" -value $identity
-    Set-ItemProperty -Path "IIS:\AppPools\$array[2]" -name "processModel" -value $identity
-    Start-WebAppPool -Name $array[0]
-    Start-WebAppPool -Name $array[1]
-    Start-WebAppPool -Name $array[2]
-}
-elseif ($array.count -eq 2){
-    Set-ItemProperty -Path "IIS:\AppPools\$array[0]" -name "processModel" -value $identity
-    ./Tentacle.exe register-with --instance "Tentacle" --server $SERVER --apiKey $APIKEY --publicHostName=$ipv4 --space $SPACE --role $array[0] --role $array[1] --environment $ENVIRONMENT --comms-style TentaclePassive --force --console
-}
- 
-Start-WebAppPool -Name 360imprimir-beta-BR
-Start-WebAppPool -Name 360imprimir-beta-MX
-Start-WebAppPool -Name 360imprimir-beta-PT
+$pool = ""
+
+for ($i=0; $i -lt $array.length; $i++){   
+
+   Try{
+       $pool =  $array[$i].ToString()
+       Set-ItemProperty -Path "IIS:\AppPools\$pool" -name "processModel" -value $identity
+       Write-Host ("Update and start sucess " +$pool ) -ForegroundColor Green
+       }
+   Catch{
+     Write-Host ("Failed to update " +$pool ) -ForegroundColor Red
+   } 
+
+   Start-WebAppPool -Name $pool
+
+} 
